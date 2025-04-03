@@ -1,0 +1,17 @@
+{
+  "name": "shared",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rimraf .turbo && rimraf dist && rimraf node_modules"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4",
+    "rimraf": "^5.0.0",
+    "@supabase/supabase-js": "^2.29.0"
+  }
+}
