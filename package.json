@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev:web": "pnpm --filter web dev",
-    "dev:mobile": "pnpm --filter mobile start --clear",
+    "dev:mobile": "EXPO_USE_METRO=1 pnpm --filter mobile exec expo start -c",
     "dev:server": "pnpm --filter server dev",
     "dev:web-server": "concurrently \"pnpm dev:web\" \"pnpm dev:server\"",
-    "dev:mobile-server": "concurrently -k \"pnpm dev:server\" \"pnpm dev:mobile\"",
+    "dev:mobile-server": "concurrently \"pnpm dev:server\" \"EXPO_USE_METRO=1 pnpm --filter mobile exec expo start -c\"",
     "dev:all": "concurrently \"pnpm dev:web\" \"pnpm dev:server\" \"pnpm dev:mobile\"",
     "build": "turbo run build",
     "lint": "turbo run lint",
