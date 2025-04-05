@@ -6,12 +6,14 @@
     "dev:web": "pnpm --filter web dev",
     "dev:mobile": "pnpm --filter mobile start",
     "dev:server": "pnpm --filter server dev",
+    "dev:all": "concurrently \"pnpm dev:web\" \"pnpm dev:server\"",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
   },
   "devDependencies": {
     "prettier": "^3.5.3",
-    "turbo": "^2.4.4"
+    "turbo": "^2.4.4",
+    "concurrently": "^8.2.2"
   }
 }
