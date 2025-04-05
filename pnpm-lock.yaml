@@ -50,15 +50,40 @@ importers:
 
   packages/mobile:
     dependencies:
+      '@big-monorepo-starter/server':
+        specifier: workspace:*
+        version: link:../server
       '@expo/vector-icons':
         specifier: ^14.0.2
         version: 14.0.4
       '@react-navigation/bottom-tabs':
         specifier: ^7.2.0
         version: 7.3.9(@react-navigation/native@7.1.5(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1))(react-native-safe-area-context@4.12.0(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1))(react-native-screens@4.4.0(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1)
+      '@react-navigation/elements':
+        specifier: ^2.3.7
+        version: 2.3.7(@react-navigation/native@7.1.5(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1))(react-native-safe-area-context@4.12.0(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1)
       '@react-navigation/native':
-        specifier: ^7.0.14
+        specifier: ^7.1.5
         version: 7.1.5(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1)
+      '@tanstack/react-query':
+        specifier: ^5.0.0
+        version: 5.71.10(react@18.3.1)
+      '@trpc/client':
+        specifier: ^11.0.0
+        version: 11.0.2(@trpc/server@11.0.2(typescript@5.8.2))(typescript@5.8.2)
+      '@trpc/react-query':
+        specifier: ^11.0.0
+        version: 11.0.2(@tanstack/react-query@5.71.10(react@18.3.1))(@trpc/client@11.0.2(@trpc/server@11.0.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.2(typescript@5.8.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)
+      '@trpc/server':
+        specifier: ^11.0.0
+        version: 11.0.2(typescript@5.8.2)
+      "bottom-tabs\n\n":
+        specifier: |+
+          link:@react-navigation/bottom-tabs
+
+        version: |+
+          link:@react-navigation/bottom-tabs
+
       expo:
         specifier: ~52.0.43
         version: 52.0.44(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@expo/metro-runtime@4.0.1(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1)))(graphql@15.8.0)(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1)
@@ -122,6 +147,14 @@ importers:
       react-native-webview:
         specifier: 13.12.5
         version: 13.12.5(react-native@0.76.9(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@react-native-community/cli@12.3.6)(@types/react@18.3.20)(react@18.3.1))(react@18.3.1)
+      "react-query\n":
+        specifier: |
+          link:@trpc/react-query
+        version: |
+          link:@trpc/react-query
+      superjson:
+        specifier: ^2.2.1
+        version: 2.2.2
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -1773,6 +1806,9 @@ packages:
   '@tanstack/query-core@4.36.1':
     resolution: {integrity: sha512-DJSilV5+ytBP1FbFcEJovv4rnnm/CokuVvrBEtW/Va9DvuJ3HksbXUJEpI0aV1KtuL4ZoO9AVE6PyNLzF7tLeA==}
 
+  '@tanstack/query-core@5.71.10':
+    resolution: {integrity: sha512-/fKEY8fO1nbszfrBatzmhJa1nEwIKn0c6Tv2A1ocSA5OiD2GukOIV8nnBbvJRgZb/VIoBy9/N4PVbABI8YQLow==}
+
   '@tanstack/react-query@4.36.1':
     resolution: {integrity: sha512-y7ySVHFyyQblPl3J3eQBWpXZkliroki3ARnBKsdJchlgt7yJLRDUcf4B8soufgiYt3pEQIkBWBx1N9/ZPIeUWw==}
     peerDependencies:
@@ -1785,6 +1821,11 @@ packages:
       react-native:
         optional: true
 
+  '@tanstack/react-query@5.71.10':
+    resolution: {integrity: sha512-mQYM/ObpL8YMDz8vCoUuHkbe8Yu7NnVRH8aBaBa/3zlufjp1f1VuWjeO3TcumNHfuVMDwEAGinsgwrB7OKADiQ==}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
@@ -1793,6 +1834,12 @@ packages:
     resolution: {integrity: sha512-ykALM5kYWTLn1zYuUOZ2cPWlVfrXhc18HzBDyRhoPYN0jey4iQHEFSEowfnhg1RvYnrAVjNBgHNeSAXjrDbGwg==}
     peerDependencies:
       '@trpc/server': 10.45.2
+
+  '@trpc/client@11.0.2':
+    resolution: {integrity: sha512-GlPEedbMTerkUfAJBsrwU6dg8N65lt3LBwrCoqR3MTZ64lRU/DQqyLjzpz5nRkEN0x4S2JmX0hASV9vc2KlSHA==}
+    peerDependencies:
+      '@trpc/server': 11.0.2
+      typescript: '>=5.7.2'
 
   '@trpc/react-query@10.45.2':
     resolution: {integrity: sha512-BAqb9bGZIscroradlNx+Cc9522R+idY3BOSf5z0jHUtkxdMbjeGKxSSMxxu7JzoLqSIEC+LVzL3VvF8sdDWaZQ==}
@@ -1803,8 +1850,23 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  '@trpc/react-query@11.0.2':
+    resolution: {integrity: sha512-i/u6cbZspGekRAHhEk/jdG1J/XR0ccF+UGFTCEozwPBMBX6eBOe3LTVJ6FLXL2n8IHbSaJEP9h76rzIMXv44lg==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.67.1
+      '@trpc/client': 11.0.2
+      '@trpc/server': 11.0.2
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+      typescript: '>=5.7.2'
+
   '@trpc/server@10.45.2':
     resolution: {integrity: sha512-wOrSThNNE4HUnuhJG6PfDRp4L2009KDVxsd+2VYH8ro6o/7/jwYZ8Uu5j+VaW+mOmc8EHerHzGcdbGNQSAUPgg==}
+
+  '@trpc/server@11.0.2':
+    resolution: {integrity: sha512-PIcm8UWFyE0AnIYjxsyc1zfVa6X10m9Opm1SJ2ou9Vu8dlXO6rMtmafLUXJsMeQk/3ecxObFtEiZIX8TvB3eCg==}
+    peerDependencies:
+      typescript: '>=5.7.2'
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -8653,6 +8715,8 @@ snapshots:
 
   '@tanstack/query-core@4.36.1': {}
 
+  '@tanstack/query-core@5.71.10': {}
+
   '@tanstack/react-query@4.36.1(react-dom@19.1.0(react@19.1.0))(react-native@0.76.9(@types/react@19.1.0)(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@tanstack/query-core': 4.36.1
@@ -8662,11 +8726,21 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       react-native: 0.76.9(@types/react@19.1.0)(react@19.1.0)
 
+  '@tanstack/react-query@5.71.10(react@18.3.1)':
+    dependencies:
+      '@tanstack/query-core': 5.71.10
+      react: 18.3.1
+
   '@tootallnate/once@2.0.0': {}
 
   '@trpc/client@10.45.2(@trpc/server@10.45.2)':
     dependencies:
       '@trpc/server': 10.45.2
+
+  '@trpc/client@11.0.2(@trpc/server@11.0.2(typescript@5.8.2))(typescript@5.8.2)':
+    dependencies:
+      '@trpc/server': 11.0.2(typescript@5.8.2)
+      typescript: 5.8.2
 
   '@trpc/react-query@10.45.2(@tanstack/react-query@4.36.1(react-dom@19.1.0(react@19.1.0))(react-native@0.76.9(@types/react@19.1.0)(react@19.1.0))(react@19.1.0))(@trpc/client@10.45.2(@trpc/server@10.45.2))(@trpc/server@10.45.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -8676,7 +8750,20 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
+  '@trpc/react-query@11.0.2(@tanstack/react-query@5.71.10(react@18.3.1))(@trpc/client@11.0.2(@trpc/server@11.0.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.0.2(typescript@5.8.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)':
+    dependencies:
+      '@tanstack/react-query': 5.71.10(react@18.3.1)
+      '@trpc/client': 11.0.2(@trpc/server@11.0.2(typescript@5.8.2))(typescript@5.8.2)
+      '@trpc/server': 11.0.2(typescript@5.8.2)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      typescript: 5.8.2
+
   '@trpc/server@10.45.2': {}
+
+  '@trpc/server@11.0.2(typescript@5.8.2)':
+    dependencies:
+      typescript: 5.8.2
 
   '@tsconfig/node10@1.0.11': {}
 
