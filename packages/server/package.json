@@ -1,8 +1,9 @@
 {
-  "name": "server",
+  "name": "@big-monorepo-starter/server",
   "version": "0.0.0",
   "private": true,
   "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",

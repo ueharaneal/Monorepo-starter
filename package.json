@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev:web": "pnpm --filter web dev",
-    "dev:mobile": "pnpm --filter mobile start",
+    "dev:mobile": "pnpm --filter mobile start --clear",
     "dev:server": "pnpm --filter server dev",
-    "dev:all": "concurrently \"pnpm dev:web\" \"pnpm dev:server\"",
+    "dev:web-server": "concurrently \"pnpm dev:web\" \"pnpm dev:server\"",
+    "dev:mobile-server": "concurrently -k \"pnpm dev:server\" \"pnpm dev:mobile\"",
+    "dev:all": "concurrently \"pnpm dev:web\" \"pnpm dev:server\" \"pnpm dev:mobile\"",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
