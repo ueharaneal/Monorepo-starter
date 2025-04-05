@@ -11,7 +11,12 @@
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "next": "15.2.4",
+    "@trpc/client": "^10.45.0",
+    "@trpc/server": "^10.45.0",
+    "@trpc/react-query": "^10.45.0",
+    "@tanstack/react-query": "^4.36.1",
+    "superjson": "^2.2.1"
   },
   "devDependencies": {
     "typescript": "^5",
