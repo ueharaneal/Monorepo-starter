@@ -41,11 +41,24 @@ A modern monorepo setup with Next.js, Express, and tRPC.
 
 ### Development
 
-Start all services (web and server):
+Choose your development setup:
 
-```bash
-pnpm dev:all
-```
+1. Web + Server (for web development):
+
+   ```bash
+   pnpm dev:web-server
+   ```
+
+2. Mobile + Server (for mobile development):
+
+   ```bash
+   pnpm dev:mobile-server
+   ```
+
+3. All services (web, mobile, and server):
+   ```bash
+   pnpm dev:all
+   ```
 
 Or start services individually:
 
@@ -53,14 +66,20 @@ Or start services individually:
 # Start web app
 pnpm dev:web
 
+# Start mobile app
+pnpm dev:mobile
+
 # Start server
 pnpm dev:server
 ```
 
 ### Available Scripts
 
-- `pnpm dev:all` - Start both web and server in development mode
+- `pnpm dev:web-server` - Start web app and server in development mode
+- `pnpm dev:mobile-server` - Start mobile app and server in development mode
+- `pnpm dev:all` - Start all services (web, mobile, and server) in development mode
 - `pnpm dev:web` - Start web app in development mode
+- `pnpm dev:mobile` - Start mobile app in development mode
 - `pnpm dev:server` - Start server in development mode
 - `pnpm build` - Build all packages
 - `pnpm lint` - Run linting across all packages
@@ -74,7 +93,8 @@ big-monorepo-starter/
 │   ├── web/          # Next.js frontend
 │   ├── server/       # Express backend with tRPC
 │   ├── shared/       # Shared types and utilities
-│   └── config/       # Shared configuration
+│   ├── config/       # Shared configuration
+│   └── mobile/       # React Native Expo app
 ├── package.json      # Root package.json
 └── pnpm-workspace.yaml
 ```
