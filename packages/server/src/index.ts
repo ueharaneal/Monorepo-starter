@@ -13,7 +13,8 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.NODE_ENV === "production" ? process.env.CORS_ORIGIN : "http://localhost:3000", // Your Next.js app URL
+  origin:
+    process.env.NODE_ENV === "production" ? process.env.PRODUCTION_URL : "http://localhost:3000", // Your Next.js app URL
   credentials: true,
 };
 

@@ -1,6 +1,6 @@
 import { createTRPCReact } from "@trpc/react-query";
 import { httpBatchLink } from "@trpc/client";
-import type { AppRouter } from "../../../server/src/routers";
+import type { AppRouter } from "@big-monorepo-starter/server";
 import { QueryClient } from "@tanstack/react-query";
 import Constants from "expo-constants";
 
