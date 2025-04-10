@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- Dont use npm 
+- we use pnpm 
+- try to run pnpm commands from the root and not within the packages 
