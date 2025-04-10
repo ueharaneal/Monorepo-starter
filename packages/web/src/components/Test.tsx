@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-import { useTRPC } from "@/utils/trpc";
-import { useQuery } from "@tanstack/react-query";
+
+import { trpc } from "@/utils/trpc";
 
 function Test() {
-  const trpc = useTRPC();
-  const { data } = useQuery(trpc.user.hello.queryOptions({ name: "name" }));
+  const { data } = trpc.user.hello.useQuery({ name: "name" });
 
   return <div className="text-red-500">{data?.greeting}</div>;
 }
