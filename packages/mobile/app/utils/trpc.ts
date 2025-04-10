@@ -38,3 +38,8 @@ export const trpcClient = trpc.createClient({
     }),
   ],
 });
+
+// Add default export to satisfy Expo Router requirements
+export default function TrpcUtils() {
+  return null;
+}
