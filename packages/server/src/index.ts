@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import * as trpcExpress from "@trpc/server/adapters/express";
 import dotenv from "dotenv";
 import { appRouter } from "./routers";
 import { createContext } from "./trpc";
@@ -25,18 +25,9 @@ app.use(express.json());
 // tRPC middleware with error handling
 app.use(
   "/trpc",
-  createExpressMiddleware({
+  trpcExpress.createExpressMiddleware({
     router: appRouter,
     createContext,
-    onError: ({ error, type, path, input, ctx, req }) => {
-      console.error("tRPC Error:", {
-        error,
-        type,
-        path,
-        input,
-        ctx,
-      });
-    },
   })
 );
 
