@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { trpc } from "../utils/trpc";
+import { trpc } from "../../utils/trpc";
 
 export default function TabOneScreen() {
   // Example query using the 'hello' procedure from our server
