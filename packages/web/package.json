@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@big-monorepo-starter/server": "workspace:*",
+    "@big-monorepo-starter/shared": "workspace:*",
     "@tanstack/react-query": "^5.71.10",
     "@tanstack/react-query-devtools": "^5",
     "@trpc/client": "^11.0.4",
