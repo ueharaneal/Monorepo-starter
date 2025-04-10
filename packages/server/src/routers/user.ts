@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { router, publicProcedure, protectedProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const userRouter = router({
+export const userRouter = createTRPCRouter({
   // Public procedure - can be called by anyone
   hello: publicProcedure
     .input(
@@ -10,16 +10,9 @@ export const userRouter = router({
       })
     )
     .query(({ input }) => {
+      console.log("input", input);
       return {
         greeting: `Hello ${input.name || "world"}!`,
       };
     }),
-
-  // Protected procedure - requires authentication
-  getProfile: protectedProcedure.query(({ ctx }) => {
-    // Return the user from the context
-    return {
-      user: ctx.user,
-    };
-  }),
 });

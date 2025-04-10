@@ -9,24 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@big-monorepo-starter/server": "workspace:*",
+    "@tanstack/react-query": "^5.71.10",
+    "@tanstack/react-query-devtools": "^5",
+    "@trpc/client": "^11.0.4",
+    "@trpc/next": "^11",
+    "@trpc/react-query": "^11.0.4",
+    "@trpc/server": "^11.0.4",
+    "@trpc/tanstack-react-query": "^11.0.4",
+    "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4",
-    "@trpc/client": "^10.45.0",
-    "@trpc/server": "^10.45.0",
-    "@trpc/react-query": "^10.45.0",
-    "@tanstack/react-query": "^4.36.1",
     "superjson": "^2.2.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
