@@ -37,9 +37,16 @@ export default function RootLayout() {
     >
       <TrpcProvider>
         <AuthProvider>
-          <Stack>
-            {/* <Stack.Screen name="index" options={{ headerShown: true }} />
-            <Stack.Screen name="auth/signup" options={{ title: "Sign Up" }} /> */}
+          <Stack
+            screenOptions={{
+              headerStyle: { backgroundColor: "#6200ee" },
+              headerTintColor: "#fff",
+              headerTitleStyle: { fontFamily: "SpaceMono" },
+              headerShadowVisible: false, // Removes the bottom shadow
+            }}
+          >
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>
