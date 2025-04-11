@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { TextInput, Button, StyleSheet, ScrollView, View } from "react-native";
+import { TextInput, StyleSheet, ScrollView, View, Button, Pressable } from "react-native";
 import { useAuth } from "@/providers/AuthProvider";
-import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { VStack } from "@/components/ui/vstack";
@@ -9,8 +8,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import AuthLayout from "./AuthLayout";
 
 export default function SignupScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const { signUp } = useAuth();
   const theme = useColorScheme() ?? "light";
@@ -22,7 +20,7 @@ export default function SignupScreen() {
   const handleSignUp = async () => {
     try {
       setError("");
-      await signUp(email, password);
+      await signUp(phone);
     } catch (err: any) {
       setError(err.message);
     }
@@ -39,13 +37,15 @@ export default function SignupScreen() {
           ]}
           placeholder="Phone number"
           placeholderTextColor={iconColor}
-          value={email}
-          onChangeText={setEmail}
+          value={phone}
+          onChangeText={setPhone}
           autoCapitalize="none"
         />
         {error ? <ThemedText style={{ color: "red", marginBottom: 10 }}>{error}</ThemedText> : null}
       </VStack>
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <Pressable onPress={handleSignUp}>
+        <ThemedText>Sign up</ThemedText>
+      </Pressable>
     </AuthLayout>
   );
 }

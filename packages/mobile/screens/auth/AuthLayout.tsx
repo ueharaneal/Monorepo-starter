@@ -4,6 +4,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import GhostSvg from "@/components/GhostSvg";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Divider } from "@/components/ui/divider";
 const AuthLayout = ({ children, title }: { children: React.ReactNode; title: string }) => {
   return (
     <SafeAreaView style={styles.scrollContainer} className="">
@@ -12,6 +13,7 @@ const AuthLayout = ({ children, title }: { children: React.ReactNode; title: str
           <GhostSvg width={100} height={152} />
         </ThemedView>
         <ThemedView style={styles.formContainer}>
+          <Divider />
           <ThemedText type="title" style={styles.title}>
             {title}
           </ThemedText>
