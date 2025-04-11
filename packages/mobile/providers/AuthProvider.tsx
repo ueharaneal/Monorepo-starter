@@ -7,7 +7,7 @@ import { View, ActivityIndicator } from "react-native";
 type AuthContextType = {
   session: AuthSession | null;
   user: SupabaseUser | null;
-  loading: boolean;
+  isLoading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -21,7 +21,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const segments = useSegments();
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<SupabaseUser | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     // Check for existing session on mount
@@ -45,8 +45,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Redirect unauthenticated users to signup
   useEffect(() => {
-    // Don't do anything while still loading
-    if (loading) return;
+    // Don't do anything while still isLoading
+    if (isLoading) return;
 
     // Check if user is in auth group
     const inAuthGroup = segments[0] === "(auth)";
@@ -60,12 +60,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!session && !inAuthGroup) {
       router.replace("/(auth)/signup");
     }
-  }, [session, loading, segments]);
+  }, [session, isLoading, segments]);
 
   const value = {
     session,
     user,
-    loading,
+    isLoading,
     signIn: async (email: string, password: string) => {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
@@ -97,7 +97,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     },
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" />
