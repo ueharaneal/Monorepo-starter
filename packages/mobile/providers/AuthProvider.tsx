@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { AuthSession, SupabaseUser } from "@big-monorepo-starter/shared";
 import { supabase } from "@/utils/supabase";
-import { router } from "expo-router";
+import { router, useSegments } from "expo-router";
 import { View, ActivityIndicator } from "react-native";
 
 type AuthContextType = {
@@ -18,6 +18,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const segments = useSegments();
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [loading, setLoading] = useState(true);
@@ -44,10 +45,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Redirect unauthenticated users to signup
   useEffect(() => {
-    if (!loading && !session) {
-      router.replace("/auth/signup");
+    // Don't do anything while still loading
+    if (loading) return;
+
+    // Check if user is in auth group
+    const inAuthGroup = segments[0] === "(auth)";
+
+    // Redirect authenticated users away from auth
+    if (session && inAuthGroup) {
+      router.replace("/(tabs)");
     }
-  }, [session, loading]);
+
+    // Redirect unauthenticated users to auth
+    if (!session && !inAuthGroup) {
+      router.replace("/(auth)/signup");
+    }
+  }, [session, loading, segments]);
 
   const value = {
     session,

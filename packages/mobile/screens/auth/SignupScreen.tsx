@@ -6,7 +6,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import GhostSvg from "@/components/GhostSvg";
+import AuthLayout from "./AuthLayout";
 
 export default function SignupScreen() {
   const [email, setEmail] = useState("");
@@ -29,44 +29,34 @@ export default function SignupScreen() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.imageContainer}>
-          <GhostSvg width={120} height={192} />
-        </ThemedView>
-        <ThemedView style={styles.formContainer}>
-          <ThemedText type="title" style={styles.title}>
-            Create Account
-          </ThemedText>
-          {error ? (
-            <ThemedText style={{ color: "#ff6b6b", marginBottom: 10 }}>{error}</ThemedText>
-          ) : null}
-          <TextInput
-            style={[
-              styles.input,
-              { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
-            ]}
-            placeholder="Email"
-            placeholderTextColor={iconColor}
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-          />
-          <TextInput
-            style={[
-              styles.input,
-              { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
-            ]}
-            placeholder="Password"
-            placeholderTextColor={iconColor}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-          <Button title="Sign Up" onPress={handleSignUp} />
-        </ThemedView>
-      </ThemedView>
-    </ScrollView>
+    <AuthLayout>
+      {error ? (
+        <ThemedText style={{ color: "#ff6b6b", marginBottom: 10 }}>{error}</ThemedText>
+      ) : null}
+      <TextInput
+        style={[
+          styles.input,
+          { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
+        ]}
+        placeholder="Email"
+        placeholderTextColor={iconColor}
+        value={email}
+        onChangeText={setEmail}
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={[
+          styles.input,
+          { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
+        ]}
+        placeholder="Password"
+        placeholderTextColor={iconColor}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      <Button title="Sign Up" onPress={handleSignUp} />
+    </AuthLayout>
   );
 }
 
