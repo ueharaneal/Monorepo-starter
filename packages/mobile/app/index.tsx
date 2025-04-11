@@ -12,7 +12,9 @@ export default function Page() {
 
   useEffect(() => {
     if (!isLoading) {
-      SplashScreen.hideAsync();
+      setTimeout(() => {
+        SplashScreen.hideAsync();
+      }, 1000);
     }
   }, [isLoading]);
 
