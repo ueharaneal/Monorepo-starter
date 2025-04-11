@@ -32,7 +32,8 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider
-      mode={colorScheme === "dark" || colorScheme === "light" ? colorScheme : "light"}
+      // mode={colorScheme === "dark" || colorScheme === "light" ? colorScheme : "dark"}
+      mode="dark"
     >
       <TrpcProvider>
         <AuthProvider>
@@ -42,7 +43,7 @@ export default function RootLayout() {
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>
-          <StatusBar style="auto" />
+          <StatusBar style="light" />
         </AuthProvider>
       </TrpcProvider>
     </GluestackUIProvider>
