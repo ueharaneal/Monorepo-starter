@@ -3,22 +3,22 @@ import { StyleSheet, ScrollView } from "react-native";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import GhostSvg from "@/components/GhostSvg";
-
-const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+import { SafeAreaView } from "react-native-safe-area-context";
+const AuthLayout = ({ children, title }: { children: React.ReactNode; title: string }) => {
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <SafeAreaView style={styles.scrollContainer} className="">
       <ThemedView style={styles.container}>
         <ThemedView style={styles.imageContainer}>
-          <GhostSvg width={120} height={192} />
+          <GhostSvg width={100} height={152} />
         </ThemedView>
         <ThemedView style={styles.formContainer}>
           <ThemedText type="title" style={styles.title}>
-            Create Account
+            {title}
           </ThemedText>
           {children}
         </ThemedView>
       </ThemedView>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   formContainer: {
     width: "100%",
     marginTop: 10,
+    gap: 20,
   },
   image: {
     width: 140,
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 20,
+    textAlign: "center",
   },
   input: {
     height: 50,

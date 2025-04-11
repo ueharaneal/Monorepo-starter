@@ -4,7 +4,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "react-native-reanimated";
 import TrpcProvider from "@/providers/TrpcProvider";
 import { useColorScheme } from "@/hooks/useColorScheme";
@@ -15,7 +15,8 @@ import { useColorScheme as useNativewindColorScheme } from "nativewind";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const { colorScheme } = useNativewindColorScheme();
+  const [colorMode, setColorMode] = useState<"light" | "dark">("dark");
+
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -31,10 +32,7 @@ export default function RootLayout() {
   }
 
   return (
-    <GluestackUIProvider
-      // mode={colorScheme === "dark" || colorScheme === "light" ? colorScheme : "dark"}
-      mode="dark"
-    >
+    <GluestackUIProvider mode={colorMode}>
       <TrpcProvider>
         <AuthProvider>
           <Stack
@@ -46,7 +44,14 @@ export default function RootLayout() {
             }}
           >
             <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(auth)" options={{ headerShown: false, animation: "fade" }} />
+            <Stack.Screen
+              name="(auth)"
+              options={{
+                headerShown: false,
+                animation: "slide_from_bottom",
+                presentation: "card",
+              }}
+            />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>

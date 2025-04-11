@@ -114,6 +114,26 @@ pnpm --filter <package-name> add -D <dependency>
 pnpm add -w <dependency>
 ```
 
+## 🚫 Package Execution Tools
+
+### Why Not to Use npx
+
+Avoid using `npx` in this project for the following reasons:
+
+- It uses npm's registry and caching system instead of pnpm's
+- It can lead to inconsistencies in package management
+- It doesn't respect pnpm's strict dependency management and hoisting rules
+- It may create conflicts with the workspace's package management
+
+### Using pnpm dlx Instead
+
+Always use `pnpm dlx` for executing packages without installing them globally:
+
+```bash
+# Example: Adding gluestack-ui components
+pnpm dlx gluestack-ui@latest add vstack --path packages/mobile
+```
+
 ## 🤝 Contributing
 
 1. Create a new branch

@@ -4,7 +4,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { Colors } from "@/constants/Colors";
+import { VStack } from "@/components/ui/vstack";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import AuthLayout from "./AuthLayout";
 
@@ -29,21 +29,22 @@ export default function SignupScreen() {
   };
 
   return (
-    <AuthLayout>
-      {error ? (
-        <ThemedText style={{ color: "#ff6b6b", marginBottom: 10 }}>{error}</ThemedText>
-      ) : null}
-      <TextInput
-        style={[
-          styles.input,
-          { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
-        ]}
-        placeholder="Phone number"
-        placeholderTextColor={iconColor}
-        value={email}
-        onChangeText={setEmail}
-        autoCapitalize="none"
-      />
+    <AuthLayout title="Create an account">
+      <VStack>
+        <ThemedText style={{ textAlign: "left", fontSize: 12 }}>Enter your phone number</ThemedText>
+        <TextInput
+          style={[
+            styles.input,
+            { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
+          ]}
+          placeholder="Phone number"
+          placeholderTextColor={iconColor}
+          value={email}
+          onChangeText={setEmail}
+          autoCapitalize="none"
+        />
+        {error ? <ThemedText style={{ color: "red", marginBottom: 10 }}>{error}</ThemedText> : null}
+      </VStack>
       <Button title="Sign Up" onPress={handleSignUp} />
     </AuthLayout>
   );

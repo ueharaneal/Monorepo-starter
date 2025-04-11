@@ -9,3 +9,4 @@ alwaysApply: true
 - Dont use npm 
 - we use pnpm 
 - try to run pnpm commands from the root and not within the packages 
+- Never use npx - always use pnpm dlx instead. Example: `pnpm dlx gluestack-ui@latest add vstack --path packages/mobile`

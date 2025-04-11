@@ -9,6 +9,7 @@ export default function AuthLayout() {
         screenOptions={{
           headerTransparent: true,
           headerTintColor: "white",
+          headerShown: false,
         }}
       >
         <Stack.Screen
