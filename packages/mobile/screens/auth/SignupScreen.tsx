@@ -38,22 +38,11 @@ export default function SignupScreen() {
           styles.input,
           { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
         ]}
-        placeholder="Email"
+        placeholder="Phone number"
         placeholderTextColor={iconColor}
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
-      />
-      <TextInput
-        style={[
-          styles.input,
-          { borderColor: theme === "dark" ? "#444" : "#ccc", color: textColor },
-        ]}
-        placeholder="Password"
-        placeholderTextColor={iconColor}
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
       />
       <Button title="Sign Up" onPress={handleSignUp} />
     </AuthLayout>
