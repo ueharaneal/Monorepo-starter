@@ -8,6 +8,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
 import { HomeIcon, PlusIcon, UserIcon } from "lucide-react-native";
 import { ThemedView } from "@/components/ThemedView";
+import { StatusBar } from "expo-status-bar";
 
 export default function TabLayout() {
   const { colorScheme } = useColorScheme();
