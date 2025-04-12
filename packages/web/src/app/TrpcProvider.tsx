@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { trpc } from "@/utils/trpc";
 import { httpBatchLink } from "@trpc/client";
+import React from "react";
 
 const getBaseUrl = () => {
   if (process.env.NODE_ENV === "development") {
@@ -11,10 +12,10 @@ const getBaseUrl = () => {
   }
 
   // Return your production server URL here
-  return process.env.PRODUCTION_SERVER_URL as string;
+  return process.env.PROD_API_URL as string;
 };
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function TrpcProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({

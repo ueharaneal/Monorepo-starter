@@ -351,11 +351,14 @@ importers:
         specifier: ^20
         version: 20.17.30
       '@types/react':
-        specifier: ^19
-        version: 19.1.0
+        specifier: ^18.3.20
+        version: 18.3.20
       '@types/react-dom':
         specifier: ^19
-        version: 19.1.1(@types/react@19.1.0)
+        version: 19.1.1(@types/react@18.3.20)
+      add:
+        specifier: ^2.0.6
+        version: 2.0.6
       eslint:
         specifier: ^9
         version: 9.23.0(jiti@2.4.2)
@@ -3070,6 +3073,9 @@ packages:
     resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  add@2.0.6:
+    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -10819,9 +10825,9 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@19.1.1(@types/react@19.1.0)':
+  '@types/react-dom@19.1.1(@types/react@18.3.20)':
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 18.3.20
 
   '@types/react-native-vector-icons@6.4.18':
     dependencies:
@@ -11202,6 +11208,8 @@ snapshots:
       acorn: 8.14.1
 
   acorn@8.14.1: {}
+
+  add@2.0.6: {}
 
   agent-base@6.0.2:
     dependencies:
