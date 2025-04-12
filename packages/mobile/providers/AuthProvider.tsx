@@ -8,8 +8,6 @@ type AuthContextType = {
   session: AuthSession | null;
   user: SupabaseUser | null;
   isLoading: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
-  signUp: (phone: string) => Promise<void>;
   signOut: () => Promise<void>;
   phoneSignIn: (phoneNumber: string) => Promise<void>;
   verifyOtp: (phoneNumber: string, token: string) => Promise<void>;
@@ -66,14 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     session,
     user,
     isLoading,
-    signIn: async (email: string, password: string) => {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
-    },
-    signUp: async (phone: string) => {
-      const { error } = await supabase.auth.signUp({ phone });
-      if (error) throw error;
-    },
+
     signOut: async () => {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
