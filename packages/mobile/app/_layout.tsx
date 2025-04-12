@@ -55,7 +55,7 @@ export default function RootLayout() {
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>
-          <StatusBar style="light" translucent />
+          <StatusBar style="dark" backgroundColor="black" />
         </TrpcProvider>
       </AuthProvider>
     </GluestackUIProvider>
