@@ -1,5 +1,6 @@
 import { createTRPCRouter } from "../trpc";
 import { userRouter } from "./user";
+import type { ContextType } from "../trpc";
 
 export const appRouter = createTRPCRouter({
   user: userRouter,

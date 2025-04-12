@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 
 export const userRouter = createTRPCRouter({
   // Public procedure - can be called by anyone
-  hello: publicProcedure
+  hello: protectedProcedure
     .input(
       z.object({
         name: z.string().optional(),

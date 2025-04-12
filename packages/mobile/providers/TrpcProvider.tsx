@@ -1,7 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import { trpc } from "@/utils/trpc";
+import { useAuth } from "@/providers/AuthProvider";
 
 const getBaseUrl = () => {
   if (process.env.NODE_ENV == "production") return process.env.EXPO_PUBLIC_API_URL as string;
@@ -9,22 +10,26 @@ const getBaseUrl = () => {
 };
 
 export default function TrpcProvider({ children }: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
-  const [trpcClient] = useState(() =>
-    trpc.createClient({
-      links: [
-        httpBatchLink({
-          url: getBaseUrl(),
-          // You can pass any HTTP headers you wish here
-          async headers() {
-            return {
-              //   authorization: getAuthCookie(),
-            };
-          },
-        }),
-      ],
-    })
+  const queryClient = useMemo(() => new QueryClient(), []);
+  const { session } = useAuth();
+
+  const trpcClient = useMemo(
+    () =>
+      trpc.createClient({
+        links: [
+          httpBatchLink({
+            url: getBaseUrl(),
+            async headers() {
+              return {
+                authorization: session?.access_token ? `Bearer ${session.access_token}` : "",
+              };
+            },
+          }),
+        ],
+      }),
+    [session?.access_token]
   );
+
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
