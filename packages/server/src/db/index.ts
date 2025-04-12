@@ -3,10 +3,6 @@ import postgres from "postgres";
 import * as schema from "./schema";
 import { BuildQueryResult, DBQueryConfig, ExtractTablesWithRelations } from "drizzle-orm";
 
-/**
- * Cache the database connection in development. This avoids creating a new connection on every HMR
- * update.
- */
 const connectionString = process.env.DATABASE_URL!;
 const client = postgres(connectionString, { ssl: "require" });
 

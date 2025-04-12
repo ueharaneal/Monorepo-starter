@@ -28,7 +28,10 @@ export async function processWithAI({
       {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "HTTP-Referer": process.env.APP_URL || "https://noghost.app", // Your app's URL
+          "HTTP-Referer":
+            process.env.NODE_ENV === "production"
+              ? process.env.PRODUCTION_URL
+              : "http://localhost:4000",
           "X-Title": "NoGhost App", // Your app's name
         },
       }
