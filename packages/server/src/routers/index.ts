@@ -1,12 +1,12 @@
 import { createTRPCRouter } from "../trpc";
-import { userRouter } from "./user";
-import type { ContextType } from "../trpc";
+import { userRouter } from "./userRouter";
+import { contactRouter } from "./contactRouter";
+import { messageRouter } from "./messageRouter";
 
 export const appRouter = createTRPCRouter({
   user: userRouter,
-  // Add more routers here as needed
+  contact: contactRouter,
+  message: messageRouter,
 });
 
-// Export type router type signature,
-// NOT the router itself.
 export type AppRouter = typeof appRouter;

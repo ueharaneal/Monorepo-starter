@@ -2,8 +2,7 @@ import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const profiles = pgTable("profiles", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id").notNull().unique(),
+  userId: uuid("user_id").notNull().primaryKey(),
   fullName: text("full_name"),
   avatarUrl: text("avatar_url"),
   bio: text("bio"),
