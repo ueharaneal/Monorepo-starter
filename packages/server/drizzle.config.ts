@@ -1,5 +1,7 @@
 import { defineConfig } from "drizzle-kit";
+import dotenv from "dotenv";
 
+dotenv.config();
 interface DBCredentials {
   url: string;
 }

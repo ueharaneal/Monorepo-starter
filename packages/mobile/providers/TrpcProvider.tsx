@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
-import React, { useMemo } from "react";
+import React from "react";
 import { trpc } from "@/utils/trpc";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -10,25 +10,21 @@ const getBaseUrl = () => {
 };
 
 export default function TrpcProvider({ children }: { children: React.ReactNode }) {
-  const queryClient = useMemo(() => new QueryClient(), []);
+  const queryClient = new QueryClient();
   const { session } = useAuth();
 
-  const trpcClient = useMemo(
-    () =>
-      trpc.createClient({
-        links: [
-          httpBatchLink({
-            url: getBaseUrl(),
-            async headers() {
-              return {
-                authorization: session?.access_token ? `Bearer ${session.access_token}` : "",
-              };
-            },
-          }),
-        ],
+  const trpcClient = trpc.createClient({
+    links: [
+      httpBatchLink({
+        url: getBaseUrl(),
+        async headers() {
+          return {
+            authorization: session?.access_token ? `Bearer ${session.access_token}` : "",
+          };
+        },
       }),
-    [session?.access_token]
-  );
+    ],
+  });
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
